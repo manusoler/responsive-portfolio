@@ -29,7 +29,7 @@ h3 {
 
   &.sm-heading {
     margin-bottom: 2rem;
-    padding: 0.2rem 0.1rem;
+    padding: 0.5rem 1rem;
     background: rgba(lighten($primary-color, 2), 0.5);
   }
 }
@@ -50,7 +50,7 @@ header {
 }
 
 main {
-  padding: 4rem;
+  padding: 1rem 4rem;
   // height: 100%;
   min-height: calc(100vh - 60px);
 
@@ -66,46 +66,111 @@ main {
   }
 
   &#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
     overflow: hidden;
-    h1 {
-      margin-top: 20vh;
+  }
+
+  &#about {
+    h3 {
+      font-size: 2rem;
     }
   }
 }
 
 .about-info {
   display: grid;
-  grid-gap: 30px;
-  grid-template-areas:
-    "bioimage bio bio"
-    "job1 job2 job3";
+  grid-gap: 0.7rem;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "bioimage bio bio" "skills skills jobs";
+
   .bio-image {
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
     border: $secondary-color 3px solid;
+    background-image: url("../img/about1.jpg");
+    height: 200px;
+    width: 200px;
+    @include easeOut;
+    &:hover {
+      background-image: url("../img/about2.jpg");
+    }
   }
 
   .bio {
     grid-area: bio;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    margin: 0.5rem 1rem;
+    a {
+      color: $secondary-color;
+    }
   }
 
-  .job {
-    background: lighten($primary-color, 5);
-    padding: 0.5rem;
-    border-bottom: $secondary-color 5px solid;
+  .skills-wrapper {
+    grid-area: skills;
   }
 
-  .job-1 {
-    grid-area: job1;
+  .jobs-wrapper {
+    grid-area: jobs;
   }
-  .job-2 {
-    grid-area: job2;
+}
+
+.skills,
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.skill-item {
+  flex: 1 0 0;
+  min-width: 250px;
+  margin: 1rem;
+  background: lighten($secondary-color, 30);
+  border-radius: 5px;
+  text-align: left !important;
+
+  .skill-bar {
+    background: $secondary-color;
+    border-radius: 5px;
+
+    span {
+      padding: 0 0.5rem;
+    }
   }
-  .job-3 {
-    grid-area: job3;
+}
+
+.timeline {
+  border-spacing: 0;
+  text-align: left !important;
+  td {
+    padding: 0 0.5rem;
+    &:first-child {
+      border-right: solid 3px $secondary-color;
+    }
+  }
+  .item-new > td {
+    padding: 1rem 0.5rem;
+    &:first-child {
+      text-align: right !important;
+      position: relative;
+      font-size: 0.7rem;
+      &:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: calc(100% - 15px);
+        left: calc(100% - 4px);
+        border-radius: 100%;
+        background: $secondary-color;
+      }
+    }
   }
 }
 
@@ -124,33 +189,6 @@ main {
       opacity: 0.5;
       border-color: $secondary-color;
       @include easeOut;
-    }
-  }
-}
-
-// Contact page
-.boxes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1rem;
-
-  div {
-    font-size: 2rem;
-    border: 3px #fff solid;
-    padding: 1.5rem 2.5rem;
-    margin-bottom: 3rem;
-    @include easeOut;
-
-    &:hover {
-      padding: 0.5rem 1.5rem;
-      background: $secondary-color;
-      color: set-text-color($secondary-color);
-
-      span {
-        color: set-text-color($secondary-color);
-      }
     }
   }
 }

@@ -123,7 +123,7 @@ h3 {
   h2.sm-heading,
   h3.sm-heading {
     margin-bottom: 2rem;
-    padding: 0.2rem 0.1rem;
+    padding: 0.5rem 1rem;
     background: rgba(73, 73, 73, 0.5); }
 
 a {
@@ -139,7 +139,7 @@ header {
   color: #ee8b1a; }
 
 main {
-  padding: 4rem;
+  padding: 1rem 4rem;
   min-height: calc(100vh - 60px); }
   main .icons {
     margin-top: 1rem; }
@@ -149,33 +149,84 @@ main {
         color: #ee8b1a;
         transition: all 0.5s ease-out; }
   main#home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem;
     overflow: hidden; }
-    main#home h1 {
-      margin-top: 20vh; }
+  main#about h3 {
+    font-size: 2rem; }
 
 .about-info {
   display: grid;
-  grid-gap: 30px;
-  grid-template-areas: "bioimage bio bio" "job1 job2 job3";
-  grid-template-columns: repeat(3, 1fr); }
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "bioimage bio bio" "skills skills jobs"; }
   .about-info .bio-image {
     grid-area: bioimage;
     margin: auto;
     border-radius: 50%;
-    border: #ee8b1a 3px solid; }
+    border: #ee8b1a 3px solid;
+    background-image: url("../img/about1.jpg");
+    height: 200px;
+    width: 200px;
+    transition: all 0.5s ease-out; }
+    .about-info .bio-image:hover {
+      background-image: url("../img/about2.jpg"); }
   .about-info .bio {
     grid-area: bio;
-    font-size: 1.5rem; }
-  .about-info .job {
-    background: #515151;
-    padding: 0.5rem;
-    border-bottom: #ee8b1a 5px solid; }
-  .about-info .job-1 {
-    grid-area: job1; }
-  .about-info .job-2 {
-    grid-area: job2; }
-  .about-info .job-3 {
-    grid-area: job3; }
+    font-size: 1.1rem;
+    margin: 0.5rem 1rem; }
+    .about-info .bio a {
+      color: #ee8b1a; }
+  .about-info .skills-wrapper {
+    grid-area: skills; }
+  .about-info .jobs-wrapper {
+    grid-area: jobs; }
+
+.skills,
+.jobs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem; }
+
+.skill-item {
+  flex: 1 0 0;
+  min-width: 250px;
+  margin: 1rem;
+  background: #f9d3a8;
+  border-radius: 5px;
+  text-align: left !important; }
+  .skill-item .skill-bar {
+    background: #ee8b1a;
+    border-radius: 5px; }
+    .skill-item .skill-bar span {
+      padding: 0 0.5rem; }
+
+.timeline {
+  border-spacing: 0;
+  text-align: left !important; }
+  .timeline td {
+    padding: 0 0.5rem; }
+    .timeline td:first-child {
+      border-right: solid 3px #ee8b1a; }
+  .timeline .item-new > td {
+    padding: 1rem 0.5rem; }
+    .timeline .item-new > td:first-child {
+      text-align: right !important;
+      position: relative;
+      font-size: 0.7rem; }
+      .timeline .item-new > td:first-child:after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: calc(100% - 15px);
+        left: calc(100% - 4px);
+        border-radius: 100%;
+        background: #ee8b1a; }
 
 .projects {
   display: grid;
@@ -188,25 +239,6 @@ main {
       opacity: 0.5;
       border-color: #ee8b1a;
       transition: all 0.5s ease-out; }
-
-.boxes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-top: 1rem; }
-  .boxes div {
-    font-size: 2rem;
-    border: 3px #fff solid;
-    padding: 1.5rem 2.5rem;
-    margin-bottom: 3rem;
-    transition: all 0.5s ease-out; }
-    .boxes div:hover {
-      padding: 0.5rem 1.5rem;
-      background: #ee8b1a;
-      color: #000; }
-      .boxes div:hover span {
-        color: #000; }
 
 .btn, .btn .btn-dark, .btn .btn-light {
   display: block;
@@ -233,6 +265,11 @@ main {
 @media screen and (min-width: 1171px) {
   .projects {
     grid-template-columns: repeat(4, 1fr); } }
+
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .about-info {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-areas: "bioimage bioimage bio bio bio bio" "skills skills skills jobs jobs jobs"; } }
 
 @media screen and (max-width: 768px) {
   main {
@@ -261,13 +298,15 @@ main {
       width: 150px;
       height: 150px; }
   .about-info {
-    grid-template-areas: "bioimage" "bio" "job1" "job2" "job3";
-    grid-template-columns: 1fr; }
+    grid-template-columns: 1fr;
+    grid-template-areas: "bioimage" "bio" "skills" "jobs"; }
   .projects {
     grid-template-columns: repeat(2, 1fr); } }
 
 @media screen and (max-width: 500px) {
   main#home h1 {
     margin-top: 10vh; }
+  main .lg-heading {
+    font-size: 4rem; }
   .projects {
     grid-template-columns: 1fr; } }
