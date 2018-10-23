@@ -240,21 +240,6 @@ main {
       border-color: #ee8b1a;
       transition: all 0.5s ease-out; }
 
-.btn, .btn .btn-dark, .btn .btn-light {
-  display: block;
-  padding: 0.5rem 1rem;
-  border: 0;
-  margin-bottom: 0.3rem; }
-  .btn:hover, .btn .btn-dark:hover, .btn .btn-light:hover {
-    background: #ee8b1a;
-    color: #000; }
-  .btn .btn-dark {
-    background: black;
-    color: #fff; }
-  .btn .btn-light {
-    background: #c4c4c4;
-    color: #fff; }
-
 #main-footer {
   text-align: center;
   padding: 1rem;
